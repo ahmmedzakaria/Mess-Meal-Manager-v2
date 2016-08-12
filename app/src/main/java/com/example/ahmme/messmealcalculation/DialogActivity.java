@@ -36,13 +36,8 @@ public class DialogActivity extends AppCompatActivity {
         Intent nexPageIntent=new Intent(this,MealResultActivity.class);
         nexPageIntent.putExtra("totalBazar",mealInfo.getTotalBazar());
         nexPageIntent.putExtra("totalExtra",mealInfo.getTotalExtra());
+        finish();
         startActivity(nexPageIntent);
-        try{
-            super.onDestroy();
-        }catch (Exception e){
-
-        }
-
 
     }
 }

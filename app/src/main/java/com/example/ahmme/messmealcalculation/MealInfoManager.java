@@ -228,4 +228,6 @@ public class MealInfoManager {
         float restMony= getMemberDepositByID(id)-getMillCost(id);
         return restMony;
     }
+
+
 }

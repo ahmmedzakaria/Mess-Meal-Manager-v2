@@ -41,10 +41,10 @@ public class MealResultActivity extends AppCompatActivity {
         mealInfo.setMealRet(mealInfo.getTotalBazar()/mealInfo.getTotalMeal());
         mealInfo.setEachPersonExtra(mealInfo.getTotalExtra()/manager.getTotalMessMember());
 
-        mealRetTV.setText(String.valueOf("Meal Ret : "+precision.format(mealInfo.getMealRet())));
-        totalMealTV.setText(String.valueOf("Total Meal :"+mealInfo.getTotalMeal()));
-        totalBazarTV.setText("Total Bazar : "+String.valueOf(mealInfo.getTotalBazar()));
-        totalExtraTV.setText("Total Extra : "+String.valueOf(mealInfo.getTotalExtra()));
+        mealRetTV.setText(String.valueOf("Meal Ret : "+mealInfo.checkInteger(Float.valueOf(precision.format(mealInfo.getMealRet())))));
+        totalMealTV.setText(String.valueOf("Total Meal :"+mealInfo.checkInteger(mealInfo.getTotalMeal())));
+        totalBazarTV.setText("Total Bazar : "+mealInfo.checkInteger(mealInfo.getTotalBazar()));
+        totalExtraTV.setText("Total Extra : "+mealInfo.checkInteger(mealInfo.getTotalExtra()));
 
         ArrayList<MealInfo> mealInfoList=manager.getAllMealInfo();
         for(MealInfo info: mealInfoList){
@@ -53,9 +53,10 @@ public class MealResultActivity extends AppCompatActivity {
             mealInfo.setDeposit(info.getDeposit());
             mealInfo.setMeal(info.getMeal());
             mealInfo.setMealCost(info.getMeal()*mealInfo.getMealRet());
-            mealInfo.setRestMony(info.getDeposit()-mealInfo.getMealCost());
+            mealInfo.setTotalCost(mealInfo.getMealCost()+mealInfo.getEachPersonExtra());
+            mealInfo.setRestMony(info.getDeposit()-mealInfo.getTotalCost());
             MealInfo resultInfo=new MealInfo(mealInfo.getId(),mealInfo.getName(),mealInfo.getDeposit(),mealInfo.getMeal(),
-                    mealInfo.getMealCost(),mealInfo.getEachPersonExtra(),mealInfo.getRestMony());
+                    mealInfo.getMealCost(),mealInfo.getEachPersonExtra(),mealInfo.getTotalCost(),mealInfo.getRestMony());
             mealResultInfoList.add(resultInfo);
         }
         adapter=new MealResultAdapter(MealResultActivity.this,mealResultInfoList);

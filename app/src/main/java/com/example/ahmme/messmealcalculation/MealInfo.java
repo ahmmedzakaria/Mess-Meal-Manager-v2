@@ -1,5 +1,8 @@
 package com.example.ahmme.messmealcalculation;
 
+import android.content.Context;
+import android.widget.Toast;
+
 /**
  * Created by ahmme on 30-07-16.
  */
@@ -13,17 +16,20 @@ public class MealInfo {
     private float meal;
     private float totalMeal;
     private float mealCost;
+    private float totalCost;
     private float mealRet;
     private float RestMony;
     private int totalMassMember;
+    Context context;
 
-    public MealInfo(int id, String name, float deposit, float meal, float MealCost,float eachPersonExtra, float restMony) {
+    public MealInfo(int id, String name, float deposit, float meal, float MealCost,float eachPersonExtra, float totalCost, float restMony) {
         this.id=id;
         this.name = name;
         this.deposit = deposit;
         this.meal = meal;
         this.mealCost = MealCost;
         this.eachPersonExtra=eachPersonExtra;
+        this.totalCost=totalCost;
         RestMony = restMony;
     }
 
@@ -38,6 +44,7 @@ public class MealInfo {
         this.deposit = deposit;
         this.meal = meal;
     }
+
 
     public MealInfo(int id, float totalBazar, float totalExtra) {
         this.id = id;
@@ -68,7 +75,12 @@ public class MealInfo {
     }
 
     public void setTotalBazar(float totalBazar) {
-        this.totalBazar = totalBazar;
+        try {
+            this.totalBazar = totalBazar;
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Please give Total Bazar", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public float getTotalExtra() {
@@ -76,7 +88,13 @@ public class MealInfo {
     }
 
     public void setTotalExtra(float totalExtra) {
-        this.totalExtra = totalExtra;
+
+        try {
+            this.totalExtra = totalExtra;
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Please give Total Extra", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     public float getEachPersonExtra() {
@@ -92,8 +110,12 @@ public class MealInfo {
     }
 
     public void setName(String name) {
+        try{
         String newName =name.toUpperCase();
         this.name=newName;
+        }catch(Exception e){
+
+        }
     }
 
     public float getDeposit() {
@@ -101,7 +123,12 @@ public class MealInfo {
     }
 
     public void setDeposit(float deposit) {
-        this.deposit = deposit;
+        try {
+            this.deposit = deposit;
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Please give Deposit", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public float getMeal() {
@@ -109,7 +136,11 @@ public class MealInfo {
     }
 
     public void setMeal(float meal) {
-        this.meal = meal;
+        try {
+            this.meal = meal;
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Please give Meal", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public float getTotalMeal() {
@@ -126,6 +157,14 @@ public class MealInfo {
 
     public void setMealCost(float MealCost) {
         this.mealCost = MealCost;
+    }
+
+    public float getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(float totalCost) {
+        this.totalCost = totalCost;
     }
 
     public float getMealRet() {
@@ -152,7 +191,31 @@ public class MealInfo {
         this.totalMassMember = totalMassMember;
     }
 
+    public Context getContext() {
+        return context;
+    }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
+    public String checkInteger(float value){
+        String intResult = "";
+        String resultString = String.valueOf(value);
+        String strArray[] = resultString.split("");
+        if (strArray[resultString.length()].equals("0") && strArray[resultString.length() - 1].equals(".")) {
+            String[] newArray = new String[resultString.length() - 1];
+            for (int i = 0; i < newArray.length; i++) {
+                newArray[i] = strArray[i];
+            }
+            for (String i : newArray) {
+                intResult += i;
+            }
+
+        } else {
+            intResult=String.valueOf(value);
+        }
+        return intResult;
+    }
 
 }

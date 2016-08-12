@@ -1,5 +1,6 @@
 package com.example.ahmme.messmealcalculation;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     MealInfo mealInfo;
     MealAdapter adapter;
     ArrayList<MealInfo> messMealArrayList;
-    //    ArrayList<MealInfo> messMillArrayList;
     MealInfoManager manager;
 
     @Override
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         mealInfo=new MealInfo();
         messMealArrayList = new ArrayList<MealInfo>();
         manager=new MealInfoManager(this);
+        mealInfo.setContext(this);
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -120,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                     Toast.makeText(MainActivity.this, "All Data Deleted", Toast.LENGTH_SHORT).show();
 
                                 }
-                                showListView();
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         .show();
 
                 return true;
-            case R.id.changePassword:
+            case R.id.about:
                 Toast.makeText(MainActivity.this, "password", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.exit:
@@ -210,7 +210,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     }
                 });
 
-                Toast.makeText(MainActivity.this, "Edit", Toast.LENGTH_SHORT).show();
                 break;
         }
         return false;

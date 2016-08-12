@@ -17,6 +17,7 @@ public class MealResultAdapter extends ArrayAdapter {
     private Context context;
     private ArrayList<MealInfo> contactList;
     ViewHolder viewHolder;
+    MealInfo mealInfo=new MealInfo();
     public MealResultAdapter(Context context, ArrayList<MealInfo> contactList) {
         super(context, R.layout.result_row_layout,contactList);
         this.context=context;
@@ -29,8 +30,9 @@ public class MealResultAdapter extends ArrayAdapter {
         TextView dipositRRTV;
         TextView millRRTV;
         TextView millCostRRTV;
-        TextView restMoneyRRTV;
         TextView extraRRTV;
+        TextView totalCostRRTV;
+        TextView restMoneyRRTV;
     }
 
     @Override
@@ -45,17 +47,8 @@ public class MealResultAdapter extends ArrayAdapter {
             viewHolder.millRRTV =(TextView)convertView.findViewById(R.id.millRR);
             viewHolder.millCostRRTV =(TextView)convertView.findViewById(R.id.millCostRR);
             viewHolder.extraRRTV=(TextView)convertView.findViewById(R.id.extraRR);
+            viewHolder.totalCostRRTV=(TextView)convertView.findViewById(R.id.totalCostRR);
             viewHolder.restMoneyRRTV =(TextView)convertView.findViewById(R.id.restMonyRR);
-
-            viewHolder.sirialNoRRTV.setText("No");
-            viewHolder.nameRRTV.setText("Name");
-            viewHolder.dipositRRTV.setText("Deposit");
-            viewHolder.millRRTV.setText("Mill");
-            viewHolder.millCostRRTV.setText("Mill Cost");
-            viewHolder.extraRRTV.setText("Extra");
-            viewHolder.restMoneyRRTV.setText("Rest Mony");
-            convertView.setTag(viewHolder);
-
 
         }
         else {
@@ -68,11 +61,12 @@ public class MealResultAdapter extends ArrayAdapter {
 
         viewHolder.sirialNoRRTV.setText(String.valueOf(position+1));
         viewHolder.nameRRTV.setText(contactList.get(position).getName());
-        viewHolder.dipositRRTV.setText(String.valueOf(contactList.get(position).getDeposit()));
-        viewHolder.millRRTV.setText(String.valueOf(contactList.get(position).getMeal()));
+        viewHolder.dipositRRTV.setText(String.valueOf(mealInfo.checkInteger(contactList.get(position).getDeposit())));
+        viewHolder.millRRTV.setText(mealInfo.checkInteger(contactList.get(position).getMeal()));
         viewHolder.millCostRRTV.setText(String.valueOf(precision.format(contactList.get(position).getMealCost())));
-        viewHolder.extraRRTV.setText(String.valueOf(precision.format(contactList.get(position).getEachPersonExtra())));
-        viewHolder.restMoneyRRTV.setText(String.valueOf(precision.format(contactList.get(position).getRestMony())));
+        viewHolder.extraRRTV.setText(mealInfo.checkInteger(Float.valueOf(precision.format(contactList.get(position).getEachPersonExtra()))));
+        viewHolder.totalCostRRTV.setText(mealInfo.checkInteger(Float.valueOf(precision.format(contactList.get(position).getTotalCost()))));
+        viewHolder.restMoneyRRTV.setText(mealInfo.checkInteger(Float.valueOf(precision.format(contactList.get(position).getRestMony()))));
         return convertView;
     }
 

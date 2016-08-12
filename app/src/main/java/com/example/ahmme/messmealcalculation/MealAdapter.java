@@ -17,6 +17,7 @@ public class MealAdapter extends ArrayAdapter {
     private Context context;
     private ArrayList<MealInfo> contactList;
     ViewHolder viewHolder;
+    MealInfo mealInfo=new MealInfo();
     public MealAdapter(Context context, ArrayList<MealInfo> contactList) {
         super(context, R.layout.row_layout,contactList);
         this.context=context;
@@ -46,13 +47,11 @@ public class MealAdapter extends ArrayAdapter {
         else {
             convertView.getTag();
         }
-        float meal=this.contactList.get(0).getMeal();
-        float deposi=this.contactList.get(0).getDeposit();
 
         viewHolder.sirialNoTV.setText(String.valueOf(position+1));
         viewHolder.nameTV.setText(contactList.get(position).getName());
-        viewHolder.dipositTV.setText(String.valueOf(contactList.get(position).getDeposit()));
-        viewHolder.millTV.setText(String.valueOf(contactList.get(position).getMeal()));
+        viewHolder.dipositTV.setText(mealInfo.checkInteger(contactList.get(position).getDeposit()));
+        viewHolder.millTV.setText(mealInfo.checkInteger(contactList.get(position).getMeal()));
         return convertView;
     }
 }
