@@ -18,10 +18,8 @@
         <activity android:name=".MealResultActivity" />
         <activity
             android:name=".DialogActivity"
-
-
-            android:theme="@style/Theme.AppCompat.Light.Dialog">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

@@ -22,14 +22,14 @@ public class MealInfo {
     private int totalMassMember;
     Context context;
 
-    public MealInfo(int id, String name, float deposit, float meal, float MealCost,float eachPersonExtra, float totalCost, float restMony) {
-        this.id=id;
+    public MealInfo(int id, String name, float deposit, float meal, float MealCost, float eachPersonExtra, float totalCost, float restMony) {
+        this.id = id;
         this.name = name;
         this.deposit = deposit;
         this.meal = meal;
         this.mealCost = MealCost;
-        this.eachPersonExtra=eachPersonExtra;
-        this.totalCost=totalCost;
+        this.eachPersonExtra = eachPersonExtra;
+        this.totalCost = totalCost;
         RestMony = restMony;
     }
 
@@ -39,6 +39,7 @@ public class MealInfo {
         this.deposit = deposit;
         this.meal = meal;
     }
+
     public MealInfo(String name, float deposit, float meal) {
         this.name = name;
         this.deposit = deposit;
@@ -77,7 +78,7 @@ public class MealInfo {
     public void setTotalBazar(float totalBazar) {
         try {
             this.totalBazar = totalBazar;
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Please give Total Bazar", Toast.LENGTH_SHORT).show();
         }
 
@@ -91,7 +92,7 @@ public class MealInfo {
 
         try {
             this.totalExtra = totalExtra;
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Please give Total Extra", Toast.LENGTH_SHORT).show();
 
         }
@@ -110,10 +111,10 @@ public class MealInfo {
     }
 
     public void setName(String name) {
-        try{
-        String newName =name.toUpperCase();
-        this.name=newName;
-        }catch(Exception e){
+        try {
+            String newName = name.toUpperCase();
+            this.name = newName;
+        } catch (Exception e) {
 
         }
     }
@@ -124,8 +125,9 @@ public class MealInfo {
 
     public void setDeposit(float deposit) {
         try {
+
             this.deposit = deposit;
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Please give Deposit", Toast.LENGTH_SHORT).show();
         }
 
@@ -137,8 +139,9 @@ public class MealInfo {
 
     public void setMeal(float meal) {
         try {
+
             this.meal = meal;
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getContext(), "Please give Meal", Toast.LENGTH_SHORT).show();
         }
     }
@@ -199,7 +202,7 @@ public class MealInfo {
         this.context = context;
     }
 
-    public String checkInteger(float value){
+    public String checkInteger(float value) {
         String intResult = "";
         String resultString = String.valueOf(value);
         String strArray[] = resultString.split("");
@@ -213,7 +216,7 @@ public class MealInfo {
             }
 
         } else {
-            intResult=String.valueOf(value);
+            intResult = String.valueOf(value);
         }
         return intResult;
     }

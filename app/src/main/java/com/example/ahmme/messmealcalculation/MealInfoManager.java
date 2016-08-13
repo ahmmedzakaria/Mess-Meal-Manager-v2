@@ -180,13 +180,13 @@ public class MealInfoManager {
     }
 
 
-    public MealInfo getBazarAndExtra() {
+    public MealInfo getBazarAndExtra(int id) {
 
         this.open();
 
         Cursor cursor = database.query(DataBaseHelper.TABLE_BAZAR_AND_EXTRA, new String[]{DataBaseHelper.COL_ID,
                         DataBaseHelper.COL_TOTAL_BAZAR, DataBaseHelper.COL_TOTAL_EXTRA},
-                null, null, null, null, null);
+                DataBaseHelper.COL_ID + " = " + id, null, null, null, null);
         cursor.moveToFirst();
 
         int columId = cursor.getInt(cursor.getColumnIndex(DataBaseHelper.COL_ID));
@@ -197,6 +197,25 @@ public class MealInfoManager {
         MealInfo contact = new MealInfo(columId, totalBazar, totalExtra);
         this.close();
         return contact;
+    }
+
+    public boolean addBazarAndExtra(MealInfo contact) {
+
+        this.open();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DataBaseHelper.COL_TOTAL_BAZAR, contact.getTotalBazar());
+        contentValues.put(DataBaseHelper.COL_TOTAL_EXTRA, contact.getTotalExtra());
+
+        long inserted = database.insert(DataBaseHelper.TABLE_BAZAR_AND_EXTRA, null, contentValues);
+        this.close();
+
+        database.close();
+
+        if (inserted > 0) {
+            return true;
+        } else return false;
+
     }
 
     public boolean updateBazarAndExtra(int id, MealInfo contact) {
@@ -213,7 +232,25 @@ public class MealInfoManager {
             return false;
     }
 
+    public int getTotalBazarExtraId() {
+        this.open();
+        Cursor cursor = database.query(DataBaseHelper.TABLE_BAZAR_AND_EXTRA, new String[]{DataBaseHelper.COL_ID},
+                null, null, null, null, null);
+        cursor.moveToLast();
+        int columId = cursor.getInt(cursor.getColumnIndex(DataBaseHelper.COL_ID));
+        this.close();
+        return columId;
+    }
 
+    public boolean deletBazarExtra() {
+        this.open();
+        int deleted = database.delete(DataBaseHelper.TABLE_BAZAR_AND_EXTRA,null,null);
+        this.close();
+        if (deleted > 0) {
+            return true;
+        } else return false;
+
+    }
 
     public float getMillRet(){
         float millRet= mealInfo.getTotalBazar()/getTotalMeal();

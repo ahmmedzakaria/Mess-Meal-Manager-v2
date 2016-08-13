@@ -34,17 +34,22 @@ public class MealResultActivity extends AppCompatActivity {
         totalExtraTV=(TextView)findViewById(R.id.totalExtraR);
         listView=(ListView)findViewById(R.id.resultListView);
 
-        mealInfo.setTotalBazar(getIntent().getFloatExtra("totalBazar",0.0f));
-        mealInfo.setTotalExtra(getIntent().getFloatExtra("totalExtra",0.0f));
+        /*mealInfo.setTotalBazar(getIntent().getFloatExtra("totalBazar",0.0f));
+        mealInfo.setTotalExtra(getIntent().getFloatExtra("totalExtra",0.0f));*/
+        mealInfo.setId(getIntent().getIntExtra("ID",0));
+        MealInfo bazarExtra=manager.getBazarAndExtra(mealInfo.getId());
 
         mealInfo.setTotalMeal(manager.getTotalMeal());
-        mealInfo.setMealRet(mealInfo.getTotalBazar()/mealInfo.getTotalMeal());
-        mealInfo.setEachPersonExtra(mealInfo.getTotalExtra()/manager.getTotalMessMember());
+        mealInfo.setMealRet(bazarExtra.getTotalBazar()/mealInfo.getTotalMeal());
+        mealInfo.setEachPersonExtra(bazarExtra.getTotalExtra()/manager.getTotalMessMember());
 
         mealRetTV.setText(String.valueOf("Meal Ret : "+mealInfo.checkInteger(Float.valueOf(precision.format(mealInfo.getMealRet())))));
         totalMealTV.setText(String.valueOf("Total Meal :"+mealInfo.checkInteger(mealInfo.getTotalMeal())));
-        totalBazarTV.setText("Total Bazar : "+mealInfo.checkInteger(mealInfo.getTotalBazar()));
-        totalExtraTV.setText("Total Extra : "+mealInfo.checkInteger(mealInfo.getTotalExtra()));
+//        totalBazarTV.setText("Total Bazar : "+mealInfo.checkInteger(mealInfo.getTotalBazar()));
+//        totalExtraTV.setText("Total Extra : "+mealInfo.checkInteger(mealInfo.getTotalExtra()));
+
+        totalBazarTV.setText("Total Bazar : "+mealInfo.checkInteger(Float.valueOf(precision.format(bazarExtra.getTotalBazar()))));
+        totalExtraTV.setText("Total Extra : "+mealInfo.checkInteger(Float.valueOf(precision.format(bazarExtra.getTotalExtra()))));
 
         ArrayList<MealInfo> mealInfoList=manager.getAllMealInfo();
         for(MealInfo info: mealInfoList){

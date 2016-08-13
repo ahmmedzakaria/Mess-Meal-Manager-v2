@@ -6,4 +6,6 @@
 
     <color name="white">#ffffff</color>
     <color name="background">#B0EABB</color>
+
+    <color name="result_head_baground">#026589</color>
 </resources>

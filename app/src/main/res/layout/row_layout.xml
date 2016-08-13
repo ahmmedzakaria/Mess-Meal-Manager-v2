@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp">
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -11,7 +12,6 @@
         android:padding="@dimen/Midium_padding"
         android:layout_weight="1"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
         android:textSize="@dimen/TextSize"
         android:id="@+id/sirialNo"
         android:gravity="left"/>
@@ -21,7 +21,6 @@
         android:background="#ffffff"
         android:layout_weight="4"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
         android:padding="@dimen/Midium_padding"
         android:textSize="@dimen/TextSize"
         android:id="@+id/name"
@@ -32,7 +31,6 @@
         android:background="#ffffff"
         android:layout_weight="2.5"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
         android:padding="@dimen/Midium_padding"
         android:textSize="@dimen/TextSize"
         android:id="@+id/deposit"
@@ -43,7 +41,6 @@
         android:background="#ffffff"
         android:layout_weight="2"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
         android:padding="@dimen/Midium_padding"
         android:textSize="@dimen/TextSize"
         android:id="@+id/meal"

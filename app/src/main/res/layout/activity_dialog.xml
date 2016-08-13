@@ -27,7 +27,7 @@
         android:background="#ffffff"
         android:id="@+id/totalExtra"
         android:textSize="16sp"
-        android:hint="Total Extra Cost"
+        android:hint="Utility"
         android:gravity="center"/>
     <Button
         android:layout_width="match_parent"
