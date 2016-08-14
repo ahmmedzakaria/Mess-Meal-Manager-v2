@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.ahmme.messmealcalculation.MealChart.MealAddActivity;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
@@ -161,6 +163,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 finishIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finishIntent.putExtra("EXIT", true);
                 startActivity(finishIntent);
+                return true;
+            case R.id.mealChart:
+                Intent mealChartIntent=new Intent(MainActivity.this, MealAddActivity.class);
+                startActivity(mealChartIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

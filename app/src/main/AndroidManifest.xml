@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ahmme.messmealcalculation">
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -18,8 +19,9 @@
         <activity android:name=".MealResultActivity" />
         <activity
             android:name=".DialogActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-        <activity android:name=".AboutActivity"></activity>
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".MealChart.MealAddActivity"></activity>
     </application>
 
 </manifest>

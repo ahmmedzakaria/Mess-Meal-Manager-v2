@@ -58,6 +58,18 @@ public class MealInfo {
         this.totalExtra = totalExtra;
     }
 
+    public MealInfo(int id, String name, float meal) {
+        this.id = id;
+        this.name = name;
+        this.meal = meal;
+    }
+
+    public MealInfo(String name, float meal) {
+
+        this.name = name;
+        this.meal = meal;
+    }
+
     public MealInfo() {
 
     }

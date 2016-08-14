@@ -19,4 +19,10 @@
         app:showAsAction="never"
         android:orderInCategory="1"
         />
+    <item
+        android:id="@+id/mealChart"
+        android:title="Meal Chart"
+        app:showAsAction="never"
+        android:orderInCategory="1"
+        />
 </menu>
